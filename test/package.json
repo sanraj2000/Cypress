@@ -1,0 +1,33 @@
+{
+  "name": "controlplane",
+  "version": "1.0.0",
+  "description": "UI test for Control Panel",
+  "main": "index.js",
+  "scripts": {
+    "cypress": "node scripts/cypress.js"
+  },
+  "devDependencies": {
+    "@reportportal/agent-js-cypress": "^5.1.0",
+    "@reportportal/agent-js-mocha": "^5.0.1",
+    "cli-table": "^0.3.4",
+    "cypress": "^12.3.0",
+    "cypress-audit": "^1.0.0",
+    "cypress-file-upload": "^4.1.1",
+    "cypress-grep": "^3.0.3",
+    "cypress-mochawesome-reporter": "^1.3.0",
+    "cypress-multi-reporters": "^1.4.0",
+    "cypress-upload-file-post-form": "^1.1.0",
+    "cypress-wait-until": "^1.7.2",
+    "imap": "^0.8.19",
+    "mailparser": "^3.0.0",
+    "mocha": "^8.2.0",
+    "mocha-multi-reporters": "^1.1.7",
+    "mochawesome": "^6.1.1",
+    "mochawesome-merge": "^4.2.1",
+    "mochawesome-report": "^1.0.0-alpha.1",
+    "mochawesome-report-generator": "^5.2.0",
+    "parse-json": "^5.2.0",
+    "start-server-and-test": "^1.14.0",
+    "typescript": "^4.6.4"
+  }
+}

@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+      "target": "es5",
+      "baseUrl": "./",
+      "moduleResolution": "node",
+      "lib": ["es5", "dom"],
+      "types": ["cypress"],
+      "allowSyntheticDefaultImports": true
+
+    },
+    "include": ["**/*.ts", "cypress/support/utilities/backend.js"]
+  }
