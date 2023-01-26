@@ -26,8 +26,7 @@ jobs:
           echo test, and deploy your project.
           UUID=$(uuidgen)
           echo $UUID
-          echo "PR_TITLE=$(uuidgen)" >> $GITHUB_ENV
-          echo $PR_TITLE
+          echo "PR_TITLE=$UUID" >> $GITHUB_ENV
           
       - name: run
         run:
