@@ -26,6 +26,6 @@ jobs:
           echo test, and deploy your project.
           UUID=$(uuidgen)
           
-      - name: Cypress run
+      - name: run
         run:
-         echo {{steps.var.output.UUID}}
+         echo ${{steps.var.output.UUID}}
