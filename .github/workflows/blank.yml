@@ -25,7 +25,8 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
           UUID=$(uuidgen)
+          echo $UUID
           
       - name: run
         run:
-         echo ${{steps.var.output.UUID}}
+         echo ${{steps.var.outputs.UUID}}
