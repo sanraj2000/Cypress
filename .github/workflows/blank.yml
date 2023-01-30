@@ -27,6 +27,7 @@ jobs:
           UUID=$(uuidgen)
           echo $UUID
           echo "PR_TITLE=$UUID" >> $GITHUB_ENV
+          sed -i "s/compilerOptions/${{ github.base_ref }}-${{ github.base_ref }}/g" ${{github.workspace}}/README.md
           
       - name: run
         run:
