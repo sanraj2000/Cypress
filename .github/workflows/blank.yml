@@ -32,3 +32,12 @@ jobs:
         run:
          echo ${{steps.var.outputs.UUID}}
          echo ${{env.PR_TITLE}}
+     
+      - name: Run Webdriver
+        run: docker run -d -p 4444:4444 --name selenium_prod selenium/standalone-chrome
+        
+      - name: Checking selenium
+        if: always()
+        run: |
+          curl -XGET http://localhost:4444/wd/hub/status
+          
