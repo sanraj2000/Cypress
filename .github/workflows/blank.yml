@@ -45,7 +45,10 @@ jobs:
          echo ${{env.PR_TITLE}}
      
 #      - name: Run Webdriver
-#        run: docker run -d -p 4444:4444 --name selenium_prod selenium/standalone-chrome
+#        run: docker run -d -p 4444:4444 --name selenium_prod selenium/standalone-chrome 
+
+      - name: docker
+        run: docker run -d hello-world
         
       - name: Checking selenium
         if: always()
