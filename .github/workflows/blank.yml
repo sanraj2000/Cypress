@@ -51,7 +51,7 @@ jobs:
         run: docker run -d -p 4442-4444:4442-4444  --name selenium-hub selenium/hub:3.141.59
         
       - name: Run
-        run: docker run -d --env HUB_HOST=selenium-hub --env HUB_PORT= 4444 selenium/node-chrome:3.141.59
+        run: docker run -d --env HUB_HOST=selenium-hub --env HUB_PORT=4444 selenium/node-chrome:3.141.59
         
         
 #      - name:  Running
