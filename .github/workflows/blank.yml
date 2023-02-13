@@ -50,9 +50,12 @@ jobs:
       - name: Download selenium
         run: docker run -d -p 4442-4444:4442-4444  --name selenium-hub selenium/hub:3.141.59
         
+      - name: Run
+        run: docker run -d --env HUB_HOST=selenium-hub --env HUB_PORT= 4444 selenium/node-chrome:3.141.59
         
-      - name:  Running
-        run: docker run -d  -e SE_EVENT_BUS_HOST=selenium-hub  --shm-size="2g" -e SE_EVENT_BUS_PUBLISH_PORT=4442  -e SE_EVENT_BUS_SUBSCRIBE_PORT=4443  selenium/node-chrome:3.141.59
+        
+#      - name:  Running
+#        run: docker run -d  -e SE_EVENT_BUS_HOST=selenium-hub  --shm-size="2g" -e SE_EVENT_BUS_PUBLISH_PORT=4442  -e SE_EVENT_BUS_SUBSCRIBE_PORT=4443  selenium/node-chrome:3.141.59
 
 #      - name: docker
 #        run: docker run -d hello-world
