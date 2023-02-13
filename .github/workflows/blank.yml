@@ -47,11 +47,11 @@ jobs:
       - name: Create network
         run: docker network create grid 
         
-      - name: Download selenium
-        run: docker run -d -p 4444:4444  --name selenium-hub selenium/hub:3.141.59
+#      - name: Download selenium
+#        run: docker run -d -p 4444:4444  --name selenium-hub selenium/hub:3.141.59
         
-      - name: Run
-        run: docker run -d --env HUB_HOST=selenium-hub --env HUB_PORT=4444 selenium/node-chrome:3.141.59
+#      - name: Run
+#        run: docker run -d --env HUB_HOST=selenium-hub --env HUB_PORT=4444 selenium/node-chrome:3.141.59
         
         
 #      - name:  Running
@@ -59,6 +59,9 @@ jobs:
 
 #      - name: docker
 #        run: docker run -d hello-world
+       
+      - name: Standalone selenium
+        run: docker run -d -p 4444:4444 --shm-size=2g selenium/standalone-chrome:3.141.59-20210929
         
       - name: Checking selenium
         if: always()
