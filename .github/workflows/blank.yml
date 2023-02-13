@@ -61,7 +61,10 @@ jobs:
 #        run: docker run -d hello-world
        
       - name: Standalone selenium
-        run: docker run -d -p 4444:4444 --shm-size=2g selenium/standalone-chrome:3.141.59-20210929
+        run: 
+         docker run -it -p 4444:4444 webdriverio/selenium-standalone
+        
+        # docker run -d -p 4444:4444 --shm-size=2g selenium/standalone-chrome:3.141.59-20210929
         
       - name: Checking selenium
         if: always()
