@@ -22,54 +22,32 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
-
+ 
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: echo Hello, world!
 
       # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        id: var
+      - name: Run a multi-line scrip
         run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
-          UUID=$(uuidgen)
-          echo $UUID
-          echo "PR_TITLE=$UUID" >> $GITHUB_ENV
-          
-      - name: run
-        run:
-         echo ${{steps.var.outputs.UUID}}
-         echo ${{env.PR_TITLE}}
-     
-      - name: Create network
-        run: docker network create grid 
-        
-#      - name: Download selenium
-#        run: docker run -d -p 4444:4444  --name selenium-hub selenium/hub:3.141.59
-        
-#      - name: Run
-#        run: docker run -d --env HUB_HOST=selenium-hub --env HUB_PORT=4444 selenium/node-chrome:3.141.59
-        
-        
-#      - name:  Running
-#        run: docker run -d  -e SE_EVENT_BUS_HOST=selenium-hub  --shm-size="2g" -e SE_EVENT_BUS_PUBLISH_PORT=4442  -e SE_EVENT_BUS_SUBSCRIBE_PORT=4443  selenium/node-chrome:3.141.59
-
-#      - name: docker
-#        run: docker run -d hello-world
-       
-      - name: Standalone selenium
-        run: 
-         docker run -d -p 4444:4444 webdriverio/selenium-standalone
-        
-        # docker run -d -p 4444:4444 --shm-size=2g selenium/standalone-chrome:3.141.59-20210929
-        
-      - name: Checking selenium
-        if: always()
-        run: |
-          curl -XGET http://localhost:4444/wd/hub/status  
-          
-  
-    
+           curl -X GET "http://vmrndapigwcloud:8080/api/v1/ca3s-dev-suite-handler/launch?filter.has.attributeKey=parallel_group&filter.has.attributeValue=762b47f0-75b6-4c40-a9bd-2804ecc9e408&access_token=44f88149-83ab-4026-a880-e8bcc3e79f7d" -H  "accept:application/json" -H  "Authorization:bearer 44f88149-83ab-4026-a880-e8bcc3e79f7d" > ./before.json
+           curl -X GET "http://vmrndapigwcloud:8080/api/v1/ca3s-dev-suite-handler/launch?filter.has.attributeKey=parallel_group&filter.has.attributeValue=c5379996-092b-4f05-b52a-3b0ec97b1483&access_token=44f88149-83ab-4026-a880-e8bcc3e79f7d" -H  "accept:application/json" -H  "Authorization:bearer 44f88149-83ab-4026-a880-e8bcc3e79f7d" > ./after.json
+   
+           tests_before_upgrade=`jq '.statistics.executions.total' before.json`
+           passed_test_before_upgrade=`jq '.statistics.executions.passed' before.json`
+           failed_test_before_upgrade=`jq '.statistics.executions.failed' before.json`
+           skipped_test_before_upgrade=`jq '.statistics.executions.skipped' before.json`
+            
+           tests_after_upgrade=`jq '.statistics.executions.total' after.json`
+           passed_test_after_upgrade=`jq '.statistics.executions.passed' after.json`
+           failed_test_after_upgrade=`jq '.statistics.executions.failed' after.json`
+           skipped_test_after_upgrade=`jq '.statistics.executions.skipped' after.json`
+           echo " $tests_before_upgrade"
+           echo " $passed_test_before_upgrade"
+           echo " $failed_test_before_upgrade"
+           echo " $skipped_test_before_upgrade"
+           echo " $tests_after_upgrade"
+           echo " $passed_test_after_upgrade"
+           echo " $failed_test_after_upgrade"
+           echo " $skipped_test_after_upgrade"           
+           
